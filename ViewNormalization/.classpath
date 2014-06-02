@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="/home/raghu/Academics/M.Tech_Project/Aditya_Bagchi/Project_Implemnentation/Requirements/apache-jena-2.11.0/lib/slf4j-log4j12-1.6.4.jar"/>
 	<classpathentry kind="lib" path="/home/raghu/Academics/M.Tech_Project/Aditya_Bagchi/Project_Implemnentation/Requirements/apache-jena-2.11.0/lib/xercesImpl-2.11.0.jar"/>
 	<classpathentry kind="lib" path="/home/raghu/Academics/M.Tech_Project/Aditya_Bagchi/Project_Implemnentation/Requirements/apache-jena-2.11.0/lib/xml-apis-1.4.01.jar"/>
+	<classpathentry kind="lib" path="/media/raghu/f49f9608-403a-46c1-81fb-af08d1029609/Academic/Academics/M.Tech_Project/Aditya_Bagchi/Project_Implemnentation/Requirements/mysql-connector-java-5.1.30/mysql-connector-java-5.1.30-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

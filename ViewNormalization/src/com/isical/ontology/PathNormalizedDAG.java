@@ -3,17 +3,22 @@
  */
 package com.isical.ontology;
 
-import com.hp.hpl.jena.*;
-import com.hp.hpl.jena.ontology.OntModel;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Vector;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
+
+import com.hp.hpl.jena.*;
+import com.hp.hpl.jena.ontology.OntModel;
+
+import com.isical.collections.IList;
+import com.isical.collections.IMap;
+import com.isical.collections.IVector;
 
 import com.isical.graph.*;
-
 
 
 /**

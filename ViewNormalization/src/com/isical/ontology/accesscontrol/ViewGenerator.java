@@ -20,9 +20,18 @@ public class ViewGenerator {
 	private Map<Integer, Integer> visitedAnchorNodes = null;
 	private Map<Integer, Integer> permissions ;
 	
+	
 	private Integer negPerm = 0;
 	private Integer posPerm = 1;
-
+	
+	
+	/*
+	public enum PERMISSION {
+		negPerm , 
+		posPerm ;
+	}
+	*/
+	
 	ViewGenerator(DAG<Integer> g, Map<Integer, Integer> perms)
 	{
 		pg = new PathNormalizedDAG(g);		

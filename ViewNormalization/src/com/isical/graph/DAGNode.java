@@ -8,7 +8,7 @@ public abstract class DAGNode<NodeLabel_t> {
 	NodeLabel_t nodeId;
 	Integer flag;
 	
-	DAGNode()
+	public DAGNode()
 	{
 		flag = 0;
 	}
