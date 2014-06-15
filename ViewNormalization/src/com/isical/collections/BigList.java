@@ -12,22 +12,29 @@ import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 import com.isical.database.IConnection;
 
+
 public class BigList<T> implements IList<T> {
 
 	IConnection db;
 	List<T> l;
 	
-	int dbListStart;
 	int bufferSize;
 	int listSize;
 	String listTblName;
 	
-		
-	public BigList(IConnection db, int bufferSize, String listTblName) throws SQLException
+	public enum STORAGE
+	{
+		PERSISTENT, TEMPORARY, INMEMORY
+	}
+
+	STORAGE storeType;
+
+	public BigList(IConnection db, int bufferSize, String listTblName, STORAGE storeType) throws SQLException
 	{
 		this.db = db;
 		this.listTblName = listTblName;
 		this.bufferSize = bufferSize;
+		this.storeType = storeType;
 		
 		l = new ArrayList<T>();
 		
@@ -38,7 +45,7 @@ public class BigList<T> implements IList<T> {
 		ResultSet rs = md.getTables(null, null, "%", null);
 		while (rs.next()) 
 		{
-		  System.out.println(rs.getString(3));
+		  System.out.println("DEBUG: " + rs.getString(3));
 		  
 		  if (rs.getString(3).compareTo(listTblName) == 0) //table already exists
 			  return;
@@ -185,7 +192,8 @@ public class BigList<T> implements IList<T> {
 	}
 
 	@Override
-	public void clear() throws SQLException {
+	public void clear() throws SQLException 
+	{
 		Statement stmt = db.getConnection().createStatement();
 		
 		String sql = "DELETE FROM " + listTblName + " WHERE id = id;";  
@@ -195,6 +203,20 @@ public class BigList<T> implements IList<T> {
 		return;
 				
 		
+	}
+	
+	protected void finalize() throws SQLException
+	{
+		if (storeType == STORAGE.TEMPORARY)
+		{
+			if (db != null)
+			{
+				Statement stmt = db.getConnection().createStatement();
+				String sql = "DROP TABLE " + listTblName;
+				
+				stmt.executeUpdate(sql);
+			}
+		}
 	}
 
 }
